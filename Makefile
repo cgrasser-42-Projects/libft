@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/11/27 15:30:05 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/11/27 19:09:06 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,17 @@ SRCS = ft_isalpha.c \
        ft_putstr_fd.c \
        ft_putendl_fd.c \
        ft_putnbr_fd.c \
+	   ft_putnbr_base.c \
+	   ft_nbrlen_base.c \
 	   ft_get_next_line.c \
+	   ft_printf.c \
+	   ft_printf_flag.c \
+	   ft_printf_char.c \
+	   ft_printf_string.c \
+	   ft_printf_ptr.c \
+	   ft_printf_int.c \
+	   ft_printf_uint.c \
+	   ft_printf_hex.c
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 
