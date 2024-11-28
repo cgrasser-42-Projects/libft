@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/11/27 19:09:06 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/11/28 14:33:21 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,36 +55,66 @@ SRCS = ft_isalpha.c \
        ft_putstr_fd.c \
        ft_putendl_fd.c \
        ft_putnbr_fd.c \
-	   ft_putnbr_base.c \
-	   ft_nbrlen_base.c \
-	   ft_get_next_line.c \
-	   ft_printf.c \
-	   ft_printf_flag.c \
-	   ft_printf_char.c \
-	   ft_printf_string.c \
-	   ft_printf_ptr.c \
-	   ft_printf_int.c \
-	   ft_printf_uint.c \
-	   ft_printf_hex.c
+       ft_putnbr_base.c \
+       ft_nbrlen_base.c \
+       ft_get_next_line.c \
+       ft_printf.c \
+       ft_printf_flag.c \
+       ft_printf_char.c \
+       ft_printf_string.c \
+       ft_printf_ptr.c \
+       ft_printf_int.c \
+       ft_printf_uint.c \
+       ft_printf_hex.c \
+       ft_lstnew_bonus.c \
+       ft_lstadd_front_bonus.c \
+       ft_lstsize_bonus.c \
+       ft_lstlast_bonus.c \
+       ft_lstadd_back_bonus.c \
+       ft_lstdelone_bonus.c \
+	   ft_lstclear_bonus.c \
+       ft_lstiter_bonus.c \
+       ft_lstmap_bonus.c
+
+BOLD = \033[1m
+GREEN = \033[32m
+RESET = \033[0m
+
+BANNER = printf "\n██$(GREEN)╗$(RESET)  ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET) ███████$(GREEN)╗$(RESET)████████$(GREEN)╗$(RESET)\
+\n██$(GREEN)║$(RESET)  ██$(GREEN)║╚════$(RESET)██$(GREEN)╗$(RESET)    ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔════╝╚══$(RESET)██$(GREEN)╔══╝$(RESET)\
+\n███████$(GREEN)║$(RESET) █████$(GREEN)╔╝$(RESET)    ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)█████$(GREEN)╗$(RESET)     ██$(GREEN)║$(RESET)   \
+\n$(GREEN)╚════$(RESET)██$(GREEN)║$(RESET)██$(GREEN)╔═══╝$(RESET)     ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔══╝$(RESET)     ██$(GREEN)║$(RESET)   \
+\n     ██$(GREEN)║$(RESET)███████$(GREEN)╗$(RESET)    ███████$(GREEN)╗$(RESET)██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)██$(GREEN)║$(RESET)        ██$(GREEN)║$(RESET)   \
+\n     $(GREEN)╚═╝╚══════╝    ╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝$(RESET)   \n\n"
+
+COMPILE_COUNT = 0
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 
-all: $(NAME)
+all: banner $(NAME)
+
+banner:
+	@$(BANNER)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
+	@echo "$(BOLD)\n\n ⋅ $(COMPILE_COUNT) file compiled ! $(GREEN)✔$(RESET)\n"
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	$(eval COMPILE_COUNT=$(shell echo $$(($(COMPILE_COUNT)+1))))
+	@printf "$(GREEN)█$(RESET)"
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
+	@echo "\n$(BOLD) ⋅ Cleaned all object files ! $(GREEN)✔$(RESET)\n"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "$(BOLD) ⋅ Cleaned libft.a ! $(GREEN)✔$(RESET)\n"
 
 re: fclean all
 
