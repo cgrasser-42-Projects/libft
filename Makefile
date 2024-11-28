@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/11/28 14:33:21 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/11/28 15:23:11 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,8 @@ COMPILE_COUNT = 0
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 
 all: banner $(NAME)
+
+sub: $(NAME)
 
 banner:
 	@$(BANNER)
