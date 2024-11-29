@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/11/28 15:23:11 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/11/29 14:00:27 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,43 +80,40 @@ BOLD = \033[1m
 GREEN = \033[32m
 RESET = \033[0m
 
-BANNER = printf "\n██$(GREEN)╗$(RESET)  ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET) ███████$(GREEN)╗$(RESET)████████$(GREEN)╗$(RESET)\
-\n██$(GREEN)║$(RESET)  ██$(GREEN)║╚════$(RESET)██$(GREEN)╗$(RESET)    ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔════╝╚══$(RESET)██$(GREEN)╔══╝$(RESET)\
-\n███████$(GREEN)║$(RESET) █████$(GREEN)╔╝$(RESET)    ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)█████$(GREEN)╗$(RESET)     ██$(GREEN)║$(RESET)   \
-\n$(GREEN)╚════$(RESET)██$(GREEN)║$(RESET)██$(GREEN)╔═══╝$(RESET)     ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔══╝$(RESET)     ██$(GREEN)║$(RESET)   \
-\n     ██$(GREEN)║$(RESET)███████$(GREEN)╗$(RESET)    ███████$(GREEN)╗$(RESET)██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)██$(GREEN)║$(RESET)        ██$(GREEN)║$(RESET)   \
-\n     $(GREEN)╚═╝╚══════╝    ╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝$(RESET)   \n\n"
+BANNER = printf "\n ██$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET) ███████$(GREEN)╗$(RESET)████████$(GREEN)╗$(RESET)\
+\n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔════╝╚══$(RESET)██$(GREEN)╔══╝$(RESET)\
+\n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)█████$(GREEN)╗$(RESET)     ██$(GREEN)║$(RESET)   \
+\n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔══╝$(RESET)     ██$(GREEN)║$(RESET)   \
+\n ███████$(GREEN)╗$(RESET)██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)██$(GREEN)║$(RESET)        ██$(GREEN)║$(RESET)   \
+\n $(GREEN)╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝$(RESET)   \n"
 
-COMPILE_COUNT = 0
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 
-all: banner $(NAME)
+all: $(NAME)
+	@$(BANNER)
 
 sub: $(NAME)
 
-banner:
-	@$(BANNER)
-
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@echo "$(BOLD)\n\n ⋅ $(COMPILE_COUNT) file compiled ! $(GREEN)✔$(RESET)\n"
+	@echo "$(BOLD) libft.a $(GREEN)✔$(RESET)"
+
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
-	$(eval COMPILE_COUNT=$(shell echo $$(($(COMPILE_COUNT)+1))))
 	@printf "$(GREEN)█$(RESET)"
 
 clean:
 	@$(RM) $(OBJS)
-	@echo "\n$(BOLD) ⋅ Cleaned all object files ! $(GREEN)✔$(RESET)\n"
+	@echo "$(BOLD) ⋅ Cleaned all object files ! $(GREEN)✔$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(BOLD) ⋅ Cleaned libft.a ! $(GREEN)✔$(RESET)\n"
+	@echo "$(BOLD) ⋅ Cleaned libft.a ! $(GREEN)✔$(RESET)"
 
 re: fclean all
 
