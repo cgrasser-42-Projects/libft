@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/11/29 14:00:27 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/11/29 14:12:01 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ SRCS = ft_isalpha.c \
        ft_lstlast_bonus.c \
        ft_lstadd_back_bonus.c \
        ft_lstdelone_bonus.c \
-	   ft_lstclear_bonus.c \
+       ft_lstclear_bonus.c \
        ft_lstiter_bonus.c \
        ft_lstmap_bonus.c
 
@@ -80,7 +80,7 @@ BOLD = \033[1m
 GREEN = \033[32m
 RESET = \033[0m
 
-BANNER = printf "\n ██$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET) ███████$(GREEN)╗$(RESET)████████$(GREEN)╗$(RESET)\
+BANNER = printf " ██$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET) ███████$(GREEN)╗$(RESET)████████$(GREEN)╗$(RESET)\
 \n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔════╝╚══$(RESET)██$(GREEN)╔══╝$(RESET)\
 \n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)█████$(GREEN)╗$(RESET)     ██$(GREEN)║$(RESET)   \
 \n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔══╝$(RESET)     ██$(GREEN)║$(RESET)   \
@@ -97,7 +97,7 @@ sub: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@echo "$(BOLD) libft.a $(GREEN)✔$(RESET)"
+	@echo "$(BOLD) libft.a $(GREEN)✔$(RESET)\n"
 
 
 $(OBJ_DIR):
