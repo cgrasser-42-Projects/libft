@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:12:34 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/11/16 11:35:55 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:19:05 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,20 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+char	*get_next_line(int fd);
 
-//==================================================================| NUMBERS |
+//=================================================================| CONVERT |
 
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
+
+//=================================================================| NUMBERS |
+
+void	ft_putnbr_base(unsigned long int nb, char *base);
+int		ft_nbrlen_base(unsigned long int nb, int base_len);
+
+//==================================================================| PRINTF |
+
+int		ft_printf(const char *s, ...);
 
 #endif
