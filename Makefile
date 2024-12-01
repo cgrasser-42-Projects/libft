@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/11/29 14:12:01 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/01 17:02:45 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRCS = ft_isalpha.c \
 BOLD = \033[1m
 GREEN = \033[32m
 RESET = \033[0m
+YELLOW = \033[93m
 
 BANNER = printf " ██$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET) ███████$(GREEN)╗$(RESET)████████$(GREEN)╗$(RESET)\
 \n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔════╝╚══$(RESET)██$(GREEN)╔══╝$(RESET)\
@@ -91,13 +92,13 @@ BANNER = printf " ██$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)██�
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 
 all: $(NAME)
-	@$(BANNER)
+# @$(BANNER)
 
 sub: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@echo "$(BOLD) libft.a $(GREEN)✔$(RESET)\n"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD) libft.a $(GREEN)✔$(RESET)"
 
 
 $(OBJ_DIR):
@@ -105,7 +106,7 @@ $(OBJ_DIR):
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
-	@printf "$(GREEN)█$(RESET)"
+# @printf "$(GREEN)█$(RESET)"
 
 clean:
 	@$(RM) $(OBJS)
