@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/01 17:02:45 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/02 23:35:23 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,40 +81,27 @@ GREEN = \033[32m
 RESET = \033[0m
 YELLOW = \033[93m
 
-BANNER = printf " ██$(GREEN)╗$(RESET)     ██$(GREEN)╗$(RESET)██████$(GREEN)╗$(RESET) ███████$(GREEN)╗$(RESET)████████$(GREEN)╗$(RESET)\
-\n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔════╝╚══$(RESET)██$(GREEN)╔══╝$(RESET)\
-\n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)█████$(GREEN)╗$(RESET)     ██$(GREEN)║$(RESET)   \
-\n ██$(GREEN)║$(RESET)     ██$(GREEN)║$(RESET)██$(GREEN)╔══$(RESET)██$(GREEN)╗$(RESET)██$(GREEN)╔══╝$(RESET)     ██$(GREEN)║$(RESET)   \
-\n ███████$(GREEN)╗$(RESET)██$(GREEN)║$(RESET)██████$(GREEN)╔╝$(RESET)██$(GREEN)║$(RESET)        ██$(GREEN)║$(RESET)   \
-\n $(GREEN)╚══════╝╚═╝╚═════╝ ╚═╝        ╚═╝$(RESET)   \n"
-
-
 OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
 
 all: $(NAME)
-# @$(BANNER)
-
-sub: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@echo "$(YELLOW) ➥ $(RESET)$(BOLD) libft.a $(GREEN)✔$(RESET)"
-
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
-# @printf "$(GREEN)█$(RESET)"
 
 clean:
 	@$(RM) $(OBJS)
-	@echo "$(BOLD) ⋅ Cleaned all object files ! $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned all object files ! $(GREEN)✔$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(BOLD) ⋅ Cleaned libft.a ! $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned libft.a ! $(GREEN)✔$(RESET)"
 
 re: fclean all
 
