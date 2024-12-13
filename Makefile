@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/02 23:35:23 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/13 18:52:09 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS = ft_isalpha.c \
        ft_tolower.c \
        ft_strchr.c \
        ft_strrchr.c \
+       ft_strcmp.c \
        ft_strncmp.c \
        ft_memchr.c \
        ft_memcmp.c \
