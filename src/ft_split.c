@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:31:28 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/11/15 19:02:24 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/16 05:32:46 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	*ft_free_split(char **split)
 	return (NULL);
 }
 
-static int	ft_count_words(const char *str, char c)
+static int	ft_count_words(const char *str, char *char_set)
 {
 	int	count;
 	int	in_word;
@@ -50,28 +50,28 @@ static int	ft_count_words(const char *str, char c)
 	in_word = 0;
 	while (*str)
 	{
-		if (*str != c && !in_word)
+		if (!ft_strchr(char_set, *str) && !in_word)
 		{
 			in_word = 1;
 			count++;
 		}
-		else if (*str == c)
+		else if (ft_strchr(char_set, *str))
 			in_word = 0;
 		str++;
 	}
 	return (count);
 }
 
-static void	ft_split_process(char const *s, char c, int *i, int *start)
+static void	ft_split_process(char const *s, char *char_set, int *i, int *start)
 {
-	while (s[*i] && s[*i] == c)
+	while (s[*i] && ft_strchr(char_set, s[*i]))
 		(*i)++;
 	*start = *i;
-	while (s[*i] && s[*i] != c)
+	while (s[*i] && !ft_strchr(char_set, s[*i]))
 		(*i)++;
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char *char_set)
 {
 	char	**to_return;
 	int		len_tab;
@@ -82,13 +82,13 @@ char	**ft_split(char const *s, char c)
 	start = 0;
 	i = 0;
 	j = 0;
-	len_tab = ft_count_words(s, c);
+	len_tab = ft_count_words(s, char_set);
 	to_return = (char **) malloc((len_tab + 1) * sizeof(char *));
 	if (!to_return)
 		return (NULL);
 	while (s[i])
 	{
-		ft_split_process(s, c, &i, &start);
+		ft_split_process(s, char_set, &i, &start);
 		if (start < i)
 		{
 			to_return[j++] = ft_substr(s, (size_t)start, (size_t)(i - start));
