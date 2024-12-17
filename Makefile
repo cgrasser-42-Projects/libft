@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/13 18:52:09 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/17 07:54:05 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRCS = ft_isalpha.c \
        ft_putnbr_base.c \
        ft_nbrlen_base.c \
        ft_get_next_line.c \
+       ft_strslen.c \
        ft_printf.c \
        ft_printf_flag.c \
        ft_printf_char.c \
