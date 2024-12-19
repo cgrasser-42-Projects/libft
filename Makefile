@@ -6,20 +6,20 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/17 07:54:05 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/19 07:17:14 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 AR = ar rcs
 RM = rm -f
 
-SRC_DIR = src/
-INC_DIR = include/
-OBJ_DIR = build/
+SRC_DIR = src
+INC_DIR = include
+OBJ_DIR = build
 
 SRCS = ft_isalpha.c \
        ft_isdigit.c \
@@ -83,27 +83,27 @@ GREEN = \033[32m
 RESET = \033[0m
 YELLOW = \033[93m
 
-OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
-	@echo "$(YELLOW) ➥ $(RESET)$(BOLD) libft.a $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)$(NAME) $(GREEN)✔$(RESET)"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJS)
-	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned all object files ! $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned all object files! $(GREEN)✔$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned libft.a ! $(GREEN)✔$(RESET)"
+	@echo "$(YELLOW) ➥ $(RESET)$(BOLD)Cleaned $(NAME)! $(GREEN)✔$(RESET)"
 
 re: fclean all
 
