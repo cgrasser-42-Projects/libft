@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 10:37:08 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/19 10:42:16 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:15:07 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	ft_strs_clear(char **strs)
 
 	i = 0;
 	while (strs[i])
-		free(strs[i]);
+		free(strs[i++]);
 	free(strs);
 }
