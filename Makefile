@@ -6,7 +6,7 @@
 #    By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/27 14:07:27 by cgrasser          #+#    #+#              #
-#    Updated: 2024/12/19 07:17:14 by cgrasser         ###   ########.fr        #
+#    Updated: 2024/12/19 10:43:53 by cgrasser         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,8 @@ SRCS = ft_isalpha.c \
        ft_lstdelone_bonus.c \
        ft_lstclear_bonus.c \
        ft_lstiter_bonus.c \
-       ft_lstmap_bonus.c
+       ft_lstmap_bonus.c \
+       ft_strs_clear.c
 
 BOLD = \033[1m
 GREEN = \033[32m

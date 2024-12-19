@@ -6,7 +6,7 @@
 /*   By: cgrasser <cgrasser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:12:34 by cgrasser          #+#    #+#             */
-/*   Updated: 2024/12/17 07:53:17 by cgrasser         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:43:23 by cgrasser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char *char_set);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_strs_clear(char **strs);
 
 //===================================================================| MEMORY |
 
